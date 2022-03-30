@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #0c0900d9
+            /* background: url(https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80) center ; */
+           
+        }
+
+        .container {
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            width: 283px;
+            margin-left: 469px;
+            height: 428px;
+            padding-bottom: 15px;
+            border-radius: 7px;
+            background-color: rgb(0 0 0 / 94%);
+
+            box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.61);
+            /* opacity: 30%; */
+            /* background-color: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(5px); */
+        }
+
+        .display {
+            width: 100%;
+            height: 80px;
+            border: none;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 2rem;
+            background-color: rgb(255 79 79 / 93%);
+            color: #000;
+            text-align: right;
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+
+        .row {
+            margin: 2px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 21px 5px;
+            border: none;
+            outline: none;
+            font-size: 2rem;
+            background-color: rgb(0 0 0 / 1%);
+            color: rgb(255 79 79 / 93%);
+            margin: 10px;
+            box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.61);
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: rgb(230, 89, 89);
+            color: black;
+        }
+
+        .op {
+            color: rgb(243, 240, 240);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" class="display" disabled>
+        <div class="keys">
+            <div class="row">
+                <button value="7">7</button>
+                <button value="8">8</button>
+                <button value="9">9</button>
+                <button value="+" class="op">+</button>
+            </div>
+            <div class="row">
+                <button value="4">4</button>
+                <button value="5">5</button>
+                <button value="6">6</button>
+                <button value="-" class="op">-</button>
+            </div>
+            <div class="row">
+                <button value="1">1</button>
+                <button value="2">2</button>
+                <button value="3">3</button>
+                <button value="*" class="op">*</button>
+            </div>
+            <div class="row">
+                <button value="0">0</button>
+                <button value="C" class="op">C</button>
+                <button value="/" class="op">/</button>
+                <button value="=" class="op">=</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const buttons = document.querySelectorAll('button');
+        const display = document.querySelector('.display');
+        buttons.forEach(function (button) {
+            button.addEventListener('click', calculate);
+        });
+        function calculate(event) {
+            const clickedButtonValue = event.target.value;
+            if (clickedButtonValue === '=') {
+
+                if (display.value !== '') {
+                    display.value = eval(display.value);
+                }
+            } else if (clickedButtonValue === 'C') {
+                display.value = '';
+            } else {
+                display.value += clickedButtonValue;
+            }
+        }
+    </script>
+</body>
+
+</html>
